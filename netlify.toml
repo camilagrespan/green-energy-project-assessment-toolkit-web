@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+  
+[[redirects]]
+  from = "/*"
+  to = "/Green Energy Project Assessment Toolkit.html"
+  status = 200

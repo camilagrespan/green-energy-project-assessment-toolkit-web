@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"Green" Energy Project Assessment Toolkit</title>
+
+<style>
+:root {
+  --terra:   #8b3a1a;
+  --sand:    #c49a4a;
+  --sandlt:  #e8c87a;
+  --clay:    #6b3a2a;
+  --darkbg:  #1c1008;
+  --midbg:   #2e1a0e;
+  --cream:   #fdf6ee;
+  --cardbg:  #ffffff;
+  --sage:    #7a9e72;
+  --sky:     #5b8fa8;
+  --dgray:   #4a3a2a;
+  --mgray:   #7a6a5a;
+  --cardbd:  #e0cdb8;
+  --rust:    #8b1a1a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Calibri, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--dgray);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--darkbg);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+.cover-geo {
+  height: 14px;
+  background: repeating-linear-gradient(90deg, var(--terra) 0px, var(--terra) 14px, var(--sand) 14px, var(--sand) 28px);
+}
+
+.cover-strata {
+  position: absolute;
+  right: 0; top: 0;
+  width: 180px; height: 100%;
+  display: flex; flex-direction: column;
+}
+.cover-strata div { flex: 1; }
+
+.cover-content {
+  flex: 1;
+  padding: 60px 260px 60px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cover-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.cover h1 {
+  font-family: Georgia, serif;
+  font-size: 52px;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.cover-subtitle {
+  font-size: 18px;
+  color: var(--sandlt);
+  line-height: 1.6;
+  max-width: 540px;
+  margin-bottom: 40px;
+}
+
+.cover-divider {
+  width: 80px; height: 3px;
+  background: var(--terra);
+  margin-bottom: 32px;
+}
+
+.cover-meta { font-size: 13px; color: var(--mgray); line-height: 2; }
+.cover-meta strong { color: white; }
+
+.cover-bottom-geo {
+  height: 10px;
+  background: repeating-linear-gradient(90deg, var(--terra) 0px, var(--terra) 10px, var(--clay) 10px, var(--clay) 20px);
+}
+
+/* ── NAV / TOC ── */
+.toc {
+  background: var(--midbg);
+  padding: 48px 64px;
+  page-break-after: always;
+}
+.toc h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  color: var(--sandlt);
+  margin-bottom: 32px;
+}
+.toc-list { list-style: none; }
+.toc-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #3a2010;
+  font-size: 14px;
+  color: #c0a880;
+}
+.toc-list li:last-child { border-bottom: none; }
+.toc-num {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  color: var(--terra);
+  min-width: 36px;
+}
+.toc-title { font-weight: 600; color: white; }
+.toc-desc { color: var(--mgray); font-size: 13px; }
+
+/* ── PAGE LAYOUT ── */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 56px 64px;
+  page-break-before: always;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--cardbd);
+}
+
+.section-num {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  color: var(--terra);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.section-title-block h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  color: var(--terra);
+  line-height: 1.2;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sand);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ── TYPOGRAPHY ── */
+h3 {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: var(--clay);
+  margin: 28px 0 10px;
+}
+
+h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin: 20px 0 6px;
+}
+
+p { margin-bottom: 14px; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--cardbg);
+  border: 1px solid var(--cardbd);
+  border-left: 4px solid var(--terra);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.card.sage  { border-left-color: var(--sage); }
+.card.sky   { border-left-color: var(--sky); }
+.card.sand  { border-left-color: var(--sand); }
+.card.clay  { border-left-color: var(--clay); }
+.card.rust  { border-left-color: var(--rust); }
+
+.card-title {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  color: var(--clay);
+  margin-bottom: 8px;
+}
+
+/* ── TECH TABLE ── */
+.tech-grid {
+  display: grid;
+  gap: 16px;
+  margin: 20px 0;
+}
+.tech-grid.four { grid-template-columns: repeat(4, 1fr); }
+.tech-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+.tech-card {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--cardbd);
+}
+
+.tech-card-header {
+  padding: 12px 16px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.tech-card-body {
+  padding: 14px 16px;
+  background: white;
+  font-size: 12.5px;
+}
+
+.tech-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 10px 0 3px;
+}
+
+.tech-card-body p { margin-bottom: 0; font-size: 12.5px; line-height: 1.5; }
+
+.verdict-bar {
+  padding: 7px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+/* Hydrogen colors */
+.h-green  .tech-card-header, .h-green  .verdict-bar { background: #2d5a2a; }
+.h-green  .tech-label { color: #2d5a2a; }
+.h-blue   .tech-card-header, .h-blue   .verdict-bar { background: #1a5fa8; }
+.h-blue   .tech-label { color: #1a5fa8; }
+.h-grey   .tech-card-header, .h-grey   .verdict-bar { background: #5a6070; }
+.h-grey   .tech-label { color: #5a6070; }
+.h-pink   .tech-card-header, .h-pink   .verdict-bar { background: #a83870; }
+.h-pink   .tech-label { color: #a83870; }
+
+/* WTE colors */
+.wte-incin .tech-card-header, .wte-incin .verdict-bar { background: var(--clay); }
+.wte-incin .tech-label { color: var(--clay); }
+.wte-gasif .tech-card-header, .wte-gasif .verdict-bar { background: var(--terra); }
+.wte-gasif .tech-label { color: var(--terra); }
+.wte-pyro  .tech-card-header, .wte-pyro  .verdict-bar { background: #5a3080; }
+.wte-pyro  .tech-label { color: #5a3080; }
+
+/* ── GREENWASHING ── */
+.buzzword-entry {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cardbd);
+  align-items: flex-start;
+}
+.buzzword-entry:last-child { border-bottom: none; }
+
+.risk-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.risk-high   { background: #fde8ec; color: var(--rust); }
+.risk-medium { background: #fef3e2; color: #7a4a0a; }
+.risk-context{ background: #e8f5e9; color: #2d5a2a; }
+
+.buzzword-term { font-weight: 700; color: var(--clay); font-size: 14px; margin-bottom: 2px; }
+.buzzword-def  { font-size: 13px; color: var(--mgray); }
+
+/* ── COMPANY PROFILES ── */
+.company-card {
+  background: var(--cardbg);
+  border: 1px solid var(--cardbd);
+  border-radius: 6px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+.company-header {
+  background: var(--midbg);
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-name {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: var(--sandlt);
+}
+
+.company-type { font-size: 12px; color: var(--mgray); margin-top: 2px; }
+
+.risk-flag {
+  padding: 5px 14px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.08em;
+}
+.flag-high    { background: var(--rust); }
+.flag-priority{ background: var(--terra); }
+.flag-caution { background: var(--sand); }
+
+.company-body { padding: 20px 24px; }
+
+.company-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.company-field-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 4px;
+}
+
+.company-field-value { font-size: 13px; color: var(--dgray); }
+
+.red-flag-list { list-style: none; }
+.red-flag-list li {
+  font-size: 13px;
+  padding: 5px 0 5px 20px;
+  position: relative;
+  color: var(--rust);
+  border-bottom: 1px dashed #f0d8d8;
+}
+.red-flag-list li:last-child { border-bottom: none; }
+.red-flag-list li::before { content: "⚑"; position: absolute; left: 0; color: var(--rust); }
+
+.placeholder-block {
+  background: #faf5ee;
+  border: 1.5px dashed var(--sand);
+  border-radius: 4px;
+  padding: 18px 22px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: var(--mgray);
+  font-style: italic;
+}
+
+/* ── CHECKLIST ── */
+.checklist-section { margin-bottom: 24px; }
+
+.checklist-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sand);
+  padding: 8px 16px;
+  background: var(--midbg);
+  margin-bottom: 2px;
+  border-radius: 3px 3px 0 0;
+  color: var(--sandlt);
+}
+
+.checklist-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 13px 16px;
+  background: white;
+  border: 1px solid var(--cardbd);
+  border-top: none;
+  font-size: 13.5px;
+}
+
+.checklist-item:last-child { border-radius: 0 0 3px 3px; }
+
+.check-num {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: var(--terra);
+  min-width: 24px;
+  line-height: 1.3;
+}
+
+.checklist-item strong { color: var(--clay); display: block; margin-bottom: 2px; }
+.checklist-item span { color: var(--mgray); font-size: 12.5px; }
+
+/* ── CALLOUT ── */
+.callout {
+  background: var(--midbg);
+  border-left: 4px solid var(--sand);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p { color: var(--sandlt); margin: 0; font-style: italic; font-size: 13.5px; }
+
+/* ── REGULATORY ── */
+.reg-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--cardbd);
+  padding: 14px 0;
+  align-items: start;
+}
+.reg-row:last-child { border-bottom: none; }
+.reg-agency {
+  font-weight: 700;
+  color: var(--terra);
+  font-size: 13px;
+  padding-right: 16px;
+}
+.reg-desc { font-size: 13px; color: var(--dgray); }
+
+/* ── ALTERNATIVES ── */
+.alt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+
+/* ── RESOURCES ── */
+.resource-section { margin-bottom: 24px; }
+.resource-section h3 { margin-bottom: 12px; }
+.resource-list { list-style: none; }
+.resource-list li {
+  font-size: 13px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--cardbd);
+  color: var(--dgray);
+}
+.resource-list li:last-child { border-bottom: none; }
+.resource-list li strong { color: var(--clay); }
+
+/* ── PRINT / PDF ── */
+@media print {
+  .page { page-break-before: always; }
+  .cover { page-break-after: always; }
+  .toc { page-break-after: always; }
+}
+
+.geo-strip {
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--terra) 0, var(--terra) 8px, transparent 8px, transparent 16px);
+  margin: 32px 0 16px;
+  opacity: 0.4;
+}
+
+footer-bar {
+  background: var(--midbg);
+  padding: 12px 64px;
+  font-size: 11px;
+  color: var(--mgray);
+  display: block;
+}
+
+/* ── STICKY SIDEBAR TOC ── */
+.sidebar-toc {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: rgba(20, 10, 5, 0.95);
+  color: var(--sandlt);
+  overflow-y: auto;
+  padding: 24px 16px;
+  border-right: 2px solid var(--terra);
+  z-index: 1000;
+  font-size: 13px;
+}
+
+.sidebar-toc h3 {
+  font-size: 14px;
+  color: var(--sand);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  border-bottom: 1px solid var(--terra);
+  padding-bottom: 8px;
+}
+
+.sidebar-toc ul {
+  list-style: none;
+}
+
+.sidebar-toc li {
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toc a {
+  color: var(--sandlt);
+  text-decoration: none;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toc a:hover {
+  background: rgba(139, 58, 26, 0.3);
+  color: #fff9f0;
+  padding-left: 12px;
+}
+
+.sidebar-toc li.active {
+  border-left-color: var(--sand);
+}
+
+.sidebar-toc li.active a {
+  color: #fff9f0;
+  background: rgba(139, 58, 26, 0.4);
+  font-weight: 600;
+}
+
+@media print {
+  .sidebar-toc { display: none; }
+}
+
+@media (max-width: 1024px) {
+  .sidebar-toc { width: 200px; font-size: 12px; }
+}
+
+@media (max-width: 768px) {
+  .sidebar-toc { display: none; }
+}
+
+/* Adjust content when sidebar is visible */
+body {
+  margin-left: 250px;
+}
+
+@media (max-width: 1024px) {
+  body { margin-left: 200px; }
+}
+
+@media (max-width: 768px) {
+  body { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     STICKY SIDEBAR TABLE OF CONTENTS
+══════════════════════════════════════════════ -->
+<div class="sidebar-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#s01">1. How to Use this toolkit</a></li>
+    <li><a href="#s02">2. The Technologies: Hydrogen</a></li>
+    <li><a href="#s03">3. The Technologies: Waste-to-Energy</a></li>
+    <li><a href="#s04">4. The Regulations</a></li>
+    <li><a href="#s05">5. The Companies</a></li>
+    <li><a href="#s06">6. The Greenwashing Guide</a></li>
+    <li><a href="#s07">7. The Due Diligence Checklist</a></li>
+    <li><a href="#s08">8. The Alternatives</a></li>
+    <li><a href="#s09">9. References &amp; Resources</a></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     COVER
+══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-geo"></div>
+  <div class="cover-strata">
+    <div style="background:#3d1f0f"></div>
+    <div style="background:#5a2e14"></div>
+    <div style="background:#7a3e1a"></div>
+    <div style="background:#8b5a2a"></div>
+    <div style="background:#a07040"></div>
+    <div style="background:#c49a4a"></div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">GreenAction for Health &amp; Environmental Justice &nbsp;*&nbsp; UC Berkeley MCS Capstone &nbsp;*&nbsp; 2026</div>
+    <h1>"Green" Energy Project Assessment Toolkit</h1>
+    <p class="cover-subtitle">A Guide for Indigenous Sovereignty in the Green Energy Transition.</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div><strong>Author</strong> &nbsp; Camila Grespan, Master of Climate Solutions, UC Berkeley</div>
+      <div><strong>Sponsor</strong> &nbsp; GreenAction for Health &amp; Environmental Justice</div>
+      <div><strong>Status</strong> &nbsp; Draft - April 2026</div>
+      <div><strong>Audience</strong> &nbsp; Tribal Councils, Community Leaders, Environmental Justice Organizations</div>
+    </div>
+  </div>
+  <div class="cover-bottom-geo"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TABLE OF CONTENTS
+══════════════════════════════════════════════ -->
+<div class="toc">
+  <h2>Contents</h2>
+  <ul class="toc-list">
+    <li><span class="toc-num">01</span><div><div class="toc-title">How to Use this toolkit</div><div class="toc-desc">Purpose, audience, and how to navigate this guide</div></div></li>
+    <li><span class="toc-num">02</span><div><div class="toc-title">The Technologies: Hydrogen</div><div class="toc-desc">Green, blue, grey, and pink hydrogen: production methods, environmental and health risks</div></div></li>
+    <li><span class="toc-num">03</span><div><div class="toc-title">The Technologies: Waste-to-Energy</div><div class="toc-desc">Incineration, gasification, and pyrolysis: what they are and why they're problematic</div></div></li>
+    <li><span class="toc-num">04</span><div><div class="toc-title">The Regulations</div><div class="toc-desc">How projects get approved, FPIC requirements, and where protections break down</div></div></li>
+    <li><span class="toc-num">05</span><div><div class="toc-title">The Companies</div><div class="toc-desc">Profiles of companies currently targeting Tribal lands</div></div></li>
+    <li><span class="toc-num">06</span><div><div class="toc-title">The Greenwashing Guide</div><div class="toc-desc">Industry buzzwords, red flag phrases, and how to spot misleading claims</div></div></li>
+    <li><span class="toc-num">07</span><div><div class="toc-title">The Due Diligence Checklist</div><div class="toc-desc">10 essential questions to ask before engaging with any energy developer</div></div></li>
+    <li><span class="toc-num">08</span><div><div class="toc-title">The Alternatives</div><div class="toc-desc">Genuinely renewable energy options that center Tribal sovereignty</div></div></li>
+    <li><span class="toc-num">09</span><div><div class="toc-title">References &amp; Resources</div><div class="toc-desc">Key organizations, documents, and databases for further research</div></div></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 01 - HOW TO USE
+══════════════════════════════════════════════ -->
+<div class="page" id="s01">
+  <div class="page-header">
+    <div class="section-num">01</div>
+    <div class="section-title-block">
+      <h2>How to Use this toolkit</h2>
+      <div class="section-label">Purpose &amp; Navigation</div>
+    </div>
+  </div>
+
+  <p>This toolkit is designed for Tribal councils, community members, and allied organizations navigating energy project proposals on or near sovereign lands. It does not tell communities what to decide - it provides the information and questions needed to make decisions that are truly informed, truly free, and truly yours.</p>
+
+  <p>Energy developers targeting Tribal lands are increasingly pitching hydrogen and waste-to-energy projects as "clean," "green," or "zero-emission" solutions. These claims are often misleading - and the technical complexity of the projects makes them difficult to evaluate without specialized knowledge. This toolkit translates that technical complexity into accessible, actionable information.</p>
+
+  <h3>How to Navigate</h3>
+  <div class="card sage">
+    <div class="card-title">If a developer has already approached your community</div>
+    <p>Start with <strong>Section 06 (Greenwashing Guide)</strong> to identify red flag language in their pitch, then check <strong>Section 05 (Company Profiles)</strong> to see if they are listed. Use the <strong>Section 07 (Due Diligence Checklist)</strong> before any formal engagement.</p>
+  </div>
+  <div class="card sand">
+    <div class="card-title">If you want to understand the technologies</div>
+    <p>Start with <strong>Sections 02 and 03</strong> for plain-language overviews of hydrogen and waste-to-energy technologies, including what each one actually emits and who bears the health risks.</p>
+  </div>
+  <div class="card sky">
+    <div class="card-title">If you want to understand your legal and regulatory rights</div>
+    <p>Go to <strong>Section 04 (Regulatory Landscape)</strong> for an overview of FPIC requirements, federal agency roles, and the tactics developers use to bypass protections.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">If you want to explore alternatives</div>
+    <p>See <strong>Section 08 (Alternative Solutions)</strong> for an overview of genuinely renewable energy options including community-owned solar and wind models that have worked on Tribal lands.</p>
+  </div>
+
+  <div class="callout">
+    <p>A note on framing: This toolkit uses the term "false solutions" to describe projects that are marketed as clean or green but fail to deliver genuine environmental or community benefit. This framing is commonly used in climate justice and environmental justice circles. However, the toolkit recognizes that not all hydrogen technologies are equivalent - green hydrogen produced from truly renewable energy sources has legitimate climate potential, and is treated differently throughout this document.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 02 - HYDROGEN TECHNOLOGIES
+══════════════════════════════════════════════ -->
+<div class="page" id="s02">
+  <div class="page-header">
+    <div class="section-num">02</div>
+    <div class="section-title-block">
+      <h2>The Technologies: Hydrogen</h2>
+      <div class="section-label">Production Methods, Environmental &amp; Health Risks</div>
+    </div>
+  </div>
+
+  <p>Hydrogen is not a single technology - it is a spectrum of production methods with very different environmental profiles. The color-coding system below (green, blue, grey, pink) is commonly used in the industry, but developers do not always disclose which type they are using. Always ask.</p>
+
+  <div class="tech-grid four">
+    <div class="tech-card h-green">
+      <div class="tech-card-header">GREEN</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How Produced</div>
+        <p>Electrolysis of water using renewable electricity (solar or wind). No fossil fuels involved in production.</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>High water consumption. Land footprint for associated renewable infrastructure. Low carbon when renewable energy is truly clean.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>Minimal direct health risks if produced cleanly. Explosion/leak risk at storage and transport facilities requires safety planning.</p>
+      </div>
+      <div class="verdict-bar">Most promising - but context matters</div>
+    </div>
+    <div class="tech-card h-blue">
+      <div class="tech-card-header">BLUE</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How Produced</div>
+        <p>Natural gas reforming (steam methane reforming) combined with carbon capture and storage (CCS) technology.</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>Methane leakage during extraction and transport. CCS is often incomplete - industry rates of 80-90% capture leave significant residual emissions. Fossil fuel dependent.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>Air quality impacts from methane and NOx emissions. Communities near gas infrastructure bear cumulative burden from upstream extraction.</p>
+      </div>
+      <div class="verdict-bar">Fossil fuel dependent - greenwashing risk</div>
+    </div>
+    <div class="tech-card h-grey">
+      <div class="tech-card-header">GREY</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How Produced</div>
+        <p>Natural gas reforming with no carbon capture. Currently the most common form of hydrogen production globally.</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>High CO<sub>2</sub> emissions - roughly 10 kg CO<sub>2</sub> per kg H<sub>2</sub>. Significant upstream methane leakage. No climate benefit over fossil fuels.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>NOx and particulate emissions near production facilities. Upstream extraction impacts on air and water quality in source communities.</p>
+      </div>
+      <div class="verdict-bar">Not clean - rarely disclosed upfront</div>
+    </div>
+    <div class="tech-card h-pink">
+      <div class="tech-card-header">PINK</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How Produced</div>
+        <p>Electrolysis powered by nuclear energy. Produces no direct carbon emissions during hydrogen production.</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>Long-term nuclear waste storage. Thermal discharge into water bodies. Risk of radioactive contamination if incident occurs.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>Radiation risk for workers and nearby communities. Long-term waste storage concerns for Tribal lands in proximity to storage sites.</p>
+      </div>
+      <div class="verdict-bar">Contested - nuclear trade-offs often hidden</div>
+    </div>
+  </div>
+
+  <h3>Key Takeaways for Communities</h3>
+  <ul style="margin-left:20px; margin-bottom:14px;">
+    <li style="margin-bottom:8px;">Always ask which color of hydrogen is being proposed and what the energy source is. A project simply called "hydrogen" or "clean hydrogen" is not automatically green hydrogen.</li>
+    <li style="margin-bottom:8px;">Blue hydrogen is not the same as green hydrogen. Carbon capture is frequently incomplete, and the technology remains dependent on natural gas extraction.</li>
+    <li style="margin-bottom:8px;">Green hydrogen has legitimate climate potential but carries significant water use implications - a critical concern for communities with existing water rights conflicts.</li>
+    <li style="margin-bottom:8px;">Many projects claiming federal "clean hydrogen" incentives under the IRA are blue or grey hydrogen - not green. Ask for documentation of the energy source before any discussions proceed.</li>
+  </ul>
+
+  <div class="callout">
+    <p>Watch for: "Regional Clean Hydrogen Hub" or "DOE-funded hydrogen project" - these designations do not guarantee the hydrogen is green. The DOE Hydrogen Hub program funds multiple hydrogen types, including blue and potentially grey. Always ask what energy source powers the electrolysis or reforming process.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 03 - WTE TECHNOLOGIES
+══════════════════════════════════════════════ -->
+<div class="page" id="s03">
+  <div class="page-header">
+    <div class="section-num">03</div>
+    <div class="section-title-block">
+      <h2>The Technologies: Waste-to-Energy</h2>
+      <div class="section-label">Incineration, Gasification &amp; Pyrolysis</div>
+    </div>
+  </div>
+
+  <p>Waste-to-Energy (WTE) projects convert municipal solid waste, biosolids, or other waste streams into energy. Across all cases reviewed for this toolkit, WTE technologies are consistently problematic - no WTE process is truly "zero waste" or emission-free, despite how they are frequently marketed.</p>
+
+  <div class="callout">
+    <p>A critical red flag: many WTE developers now partner with Regional Hydrogen Hubs to access federal DOE funding and rebrand their projects as "hydrogen" companies. This makes them harder to identify and track. A project branded as "hydrogen" may in fact be a waste gasification facility.</p>
+  </div>
+
+  <div class="tech-grid three" style="margin-top:24px;">
+    <div class="tech-card wte-incin">
+      <div class="tech-card-header">INCINERATION</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How It Works</div>
+        <p>Burns municipal solid waste at high temperatures (800-1000degC) to generate steam that drives turbines and produces electricity.</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>Produces dioxins, furans, heavy metals, and bottom ash requiring landfill disposal. CO<sub>2</sub> and NOx emissions comparable to fossil fuel plants. Ash is a hazardous waste.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>Linked to increased rates of cancer, respiratory illness, and cardiovascular disease in surrounding communities. Historically sited disproportionately near low-income communities and communities of color.</p>
+      </div>
+      <div class="verdict-bar">Most common WTE pitch to Tribal lands</div>
+    </div>
+    <div class="tech-card wte-gasif">
+      <div class="tech-card-header">GASIFICATION</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How It Works</div>
+        <p>Partially oxidizes waste at high heat to produce syngas (a mixture of carbon monoxide and hydrogen), which is then combusted for energy.</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>Produces tar, slag, and contaminated wastewater. Syngas combustion releases CO<sub>2</sub>, NOx, and particulates. Ash contains concentrated heavy metals.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>Carcinogen emissions including benzene and polycyclic aromatic hydrocarbons (PAHs). Worker exposure risk. Community air quality impacts depend heavily on facility management quality.</p>
+      </div>
+      <div class="verdict-bar">Often marketed as "cleaner" than incineration</div>
+    </div>
+    <div class="tech-card wte-pyro">
+      <div class="tech-card-header">PYROLYSIS</div>
+      <div class="tech-card-body">
+        <div class="tech-label">How It Works</div>
+        <p>Heats waste in the absence of oxygen to produce bio-oil, syngas, and char. Sometimes marketed as "chemical recycling" or "advanced recycling."</p>
+        <div class="tech-label">Environmental Risks</div>
+        <p>Produces hazardous liquid and solid byproducts. Emission profiles are difficult to characterize fully. Energy-intensive process may require fossil fuel inputs.</p>
+        <div class="tech-label">Health Risks</div>
+        <p>Poorly regulated. Limited long-term health data. PFAS ("forever chemicals") and heavy metals can concentrate in char, which may be marketed as fertilizer - posing serious soil and groundwater contamination risks.</p>
+      </div>
+      <div class="verdict-bar">Least regulated - highest greenwashing risk</div>
+    </div>
+  </div>
+
+  <h3>The "No-Burn" Claim</h3>
+  <p>Several gasification and pyrolysis companies - including H-Cycle and Sierra Energy - market their technologies as "non-combustion" or "no-burn." This is a technicality. While the initial waste processing stage may not involve direct combustion, the syngas or bio-oil produced is subsequently burned to generate power, releasing the same pollutants the "gasification" stage supposedly avoided. The claim is misleading and should be treated as a red flag.</p>
+
+  <h3>The "Zero Waste" Claim</h3>
+  <p>No WTE process produces zero waste. All three technologies generate toxic solid residues (ash, slag, or char) that require disposal. "Zero waste to landfill" claims typically mean the ash or char is reclassified and sent elsewhere - often to communities that have even less regulatory protection. Always ask: where does the ash go?</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 06 - GREENWASHING GUIDE
+══════════════════════════════════════════════ -->
+<div class="page" id="s04">
+  <div class="page-header">
+    <div class="section-num">04</div>
+    <div class="section-title-block">
+      <h2>The Regulations</h2>
+      <div class="section-label">How Projects Get Approved - and How Protections Break Down</div>
+    </div>
+  </div>
+
+  <p>Understanding the regulatory environment is essential for evaluating any energy project proposal. Tribal sovereign lands exist at a complex intersection of federal, state, and tribal jurisdiction - a complexity that developers actively exploit to minimize oversight and accelerate approvals.</p>
+
+  <h3>Free, Prior, and Informed Consent (FPIC)</h3>
+  <p>FPIC is an internationally recognized right of Indigenous peoples to give or withhold consent to projects affecting their lands and communities. It is enshrined in the United Nations Declaration on the Rights of Indigenous Peoples (UNDRIP, Articles 19, 26, and 32) and adopted in multiple international frameworks. It requires that consent be:</p>
+  <ul style="margin-left:20px; margin-bottom:14px;">
+    <li style="margin-bottom:6px;"><strong>Free</strong> - given without coercion, manipulation, or improper pressure</li>
+    <li style="margin-bottom:6px;"><strong>Prior</strong> - obtained before any project activities begin, not after plans are finalized</li>
+    <li style="margin-bottom:6px;"><strong>Informed</strong> - based on complete, accurate, and accessible information about the project</li>
+  </ul>
+  <div class="callout">
+    <p>In practice, FPIC is frequently violated. Developers often conduct "consultation" only after project design is complete, engage only with council leadership rather than the broader community, and frame outreach as community engagement rather than consent. Receiving a presentation is not the same as giving consent. Legal examples of FPIC violations include: the Dakota Access Pipeline controversy (DAPL was approved without meaningful consultation with the Standing Rock Sioux Tribe before construction began) and the Tonto Natural Bridge State Park uranium mining proposal (community concerns were dismissed despite extensive prior engagement). These cases demonstrate how developers and agencies can proceed without genuine FPIC, making legal vigilance essential.</p>
+  </div>
+
+  <h3>Federal Agency Roles</h3>
+  <div class="reg-row">
+    <div class="reg-agency">EPA</div>
+    <div class="reg-desc">Oversees environmental review under NEPA and enforces Clean Air Act and Clean Water Act standards. Enforcement on Tribal lands is inconsistent - the agency has limited staff and resources dedicated to Indian Country. Can be a point of advocacy for communities seeking independent environmental review.</div>
+  </div>
+  <div class="reg-row">
+    <div class="reg-agency">BIA (Bureau of Indian Affairs)</div>
+    <div class="reg-desc">Manages trust land approvals and right-of-way decisions for energy infrastructure crossing Tribal lands. Chronically underfunded and understaffed, leading to slow reviews and inconsistent protection. Has its own NEPA process for trust land actions.</div>
+  </div>
+  <div class="reg-row">
+    <div class="reg-agency">FERC</div>
+    <div class="reg-desc">Federal Energy Regulatory Commission - relevant for hydrogen pipeline infrastructure and natural gas facilities. Jurisdiction is contested on sovereign lands. FERC has historically prioritized infrastructure development over community concerns.</div>
+  </div>
+  <div class="reg-row">
+    <div class="reg-agency">DOE</div>
+    <div class="reg-desc">Administers the Hydrogen Hub program and IRA clean energy incentives. The DOE has a stated commitment to Tribal consultation but funding timelines create significant pressure on communities to move quickly. DOE approval does not constitute environmental or community approval.</div>
+  </div>
+  <div class="reg-row">
+    <div class="reg-agency">State Agencies</div>
+    <div class="reg-desc">Jurisdiction of state environmental agencies over Tribal sovereign lands is contested and varies by state, treaty, and specific land status. Developers sometimes route projects to minimize state oversight by using trust land or tribal enterprise structures.</div>
+  </div>
+
+  <h3>Common Developer Bypass Strategies</h3>
+  <div class="card rust">
+    <div class="card-title">Categorical Exclusions</div>
+    <p>Developers seek "categorical exclusions" from full Environmental Impact Statement (EIS) review by fragmenting a larger project into smaller components, each of which individually qualifies for exclusion. The cumulative impact is never fully assessed.</p>
+  </div>
+  <div class="card rust">
+    <div class="card-title">Tribal Enterprise Routing</div>
+    <p>Some developers structure projects through Tribal enterprise entities to reduce state and federal oversight - exploiting sovereignty protections that were designed to protect communities, not facilitate developer access.</p>
+  </div>
+  <div class="card rust">
+    <div class="card-title">Jurisdictional Ambiguity</div>
+    <p>When federal, state, and tribal agencies each claim or disclaim jurisdiction, developers operate in the resulting grey zone to minimize review requirements. Communities can push back by demanding clarity on which agency has jurisdiction and what standards apply.</p>
+  </div>
+
+  <h3>IRA &amp; DOE Funding as a Pressure Mechanism</h3>
+  <p>The Inflation Reduction Act and DOE Hydrogen Hub program have created billions of dollars in clean energy incentives - and significant time pressure. Developers regularly use federal funding timelines as leverage, framing delay as "missing out" on once-in-a-generation funding. Communities have the right to take the time they need. Federal funding opportunities do not expire overnight, and the urgency framing is frequently a sales tactic.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 05 - COMPANY PROFILES
+══════════════════════════════════════════════ -->
+<div class="page" id="s05">
+  <div class="page-header">
+    <div class="section-num">05</div>
+    <div class="section-title-block">
+      <h2>The Companies</h2>
+      <div class="section-label">Companies Currently Targeting Tribal Lands</div>
+    </div>
+  </div>
+
+  <p>The following profiles cover companies identified through research and community outreach as actively targeting - or proposing projects near - Tribal sovereign lands. Each profile uses publicly available information. Profiles are not exhaustive; communities should conduct their own research using the resources in Section 09.</p>
+
+  <!-- H-CYCLE -->
+  <div class="company-card">
+    <div class="company-header">
+      <div>
+        <div class="company-name">H-Cycle</div>
+        <div class="company-type">Hydrogen / WTE Hybrid &nbsp;*&nbsp; California</div>
+      </div>
+      <div class="risk-flag flag-high">HIGH RISK</div>
+    </div>
+    <div class="company-body">
+      <div class="company-grid">
+        <div>
+          <div class="company-field-label">The Pitch</div>
+          <div class="company-field-value">"Hydrogen-rich syngas" through waste gasification. Claims "non-combustion" and "zero-emission" technology. Frames process as a clean energy solution for communities with waste management needs.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Tribal Connection</div>
+          <div class="company-field-value">Actively targeting California Tribal nations, including communities in and around the Central Valley. Primary focus of GreenAction's current organizing work.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Technology Type</div>
+          <div class="company-field-value">Waste gasification / plasma arc. Produces syngas marketed as "hydrogen-rich" - the syngas is subsequently combusted, contradicting the "non-combustion" claim.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Key Personnel / Affiliations</div>
+          <div class="company-field-value">Company leadership has documented ties to Plasco Energy Group - the company responsible for a high-profile $300M plasma arc failure in Ottawa, Canada. Plasco's Ottawa facility collapsed in 2018 after years of operational and safety problems.</div>
+        </div>
+      </div>
+      <div class="company-field-label">Red Flags</div>
+      <ul class="red-flag-list">
+        <li>"No emissions" claim contradicted by engineering schematics showing emission stacks</li>
+        <li>Leadership connections to Plasco Energy Group's failed Ottawa plasma arc project</li>
+        <li>"Non-combustion" label applied only to first processing stage - syngas is combusted for energy</li>
+        <li>Targeting communities with existing environmental justice burdens in California's Central Valley</li>
+      </ul>
+      <div class="placeholder-block">[Placeholder: Additional technical analysis to be incorporated from materials provided by Bradley Angel (GreenAction). H-Cycle schematics analysis pending.]</div>
+    </div>
+  </div>
+
+  <!-- TALLGRASS -->
+  <div class="company-card">
+    <div class="company-header">
+      <div>
+        <div class="company-name">Tallgrass Energy / GreenView Logistics</div>
+        <div class="company-type">Hydrogen Pipeline &amp; Infrastructure &nbsp;*&nbsp; Western Hydrogen Hub</div>
+      </div>
+      <div class="risk-flag flag-priority">PRIORITY</div>
+    </div>
+    <div class="company-body">
+      <div class="company-grid">
+        <div>
+          <div class="company-field-label">The Pitch</div>
+          <div class="company-field-value">Large-scale hydrogen pipeline and distribution infrastructure as part of the Western Interstate Hydrogen Hub (WISHH). Pitches economic development and energy transition partnership to Tribal governments along proposed pipeline routes.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Tribal Connection</div>
+          <div class="company-field-value">Proposed hydrogen pipeline would cross or border multiple Tribal nations in the Southwest. The Navajo Nation has been specifically targeted - community members have raised alarms about potential impacts on water supply.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Federal Backing</div>
+          <div class="company-field-value">Active participant in DOE-funded Western Hydrogen Hub. Significant federal backing accelerates project timelines and is used to pressure fast community decisions. Company has moved to Blackstone investment management.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Key Issues</div>
+          <div class="company-field-value">MIT Environmental Justice Clinic has submitted open letters to the Navajo Nation council raising concerns about the proposed pipeline. Navajo Nation community members report being blindsided by route changes. Water rights implications unresolved.</div>
+        </div>
+      </div>
+      <div class="company-field-label">Red Flags</div>
+      <ul class="red-flag-list">
+        <li>Navajo Nation community members report being blindsided by pipeline route changes - FPIC concerns</li>
+        <li>Potential water supply impacts on Navajo Nation water rights (raised by community advocates)</li>
+        <li>Federal Hydrogen Hub designation used to fast-track approvals and pressure timeline</li>
+        <li>Transition to Blackstone management raises questions about financial prioritization</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PLUG POWER -->
+  <div class="company-card">
+    <div class="company-header">
+      <div>
+        <div class="company-name">Plug Power</div>
+        <div class="company-type">Green / Blue Hydrogen &nbsp;*&nbsp; Northeast US &amp; Expanding</div>
+      </div>
+      <div class="risk-flag flag-priority">PRIORITY</div>
+    </div>
+    <div class="company-body">
+      <div class="company-grid">
+        <div>
+          <div class="company-field-label">The Pitch</div>
+          <div class="company-field-value">Large-scale green hydrogen developer with major DOE backing. Pitches clean energy transition and economic partnership. One of the largest hydrogen companies in the US by market capitalization.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Tribal Connection</div>
+          <div class="company-field-value">Growing presence near Tribal lands in the Northeast. Expanding operations nationally with significant IRA incentive support. Has been involved in multiple DOE Hydrogen Hub proposals.</div>
+        </div>
+      </div>
+      <div class="company-field-label">Red Flags</div>
+      <ul class="red-flag-list">
+        <li>Despite "green hydrogen" branding, significant portion of current production relies on grey hydrogen - the company has faced scrutiny for claiming renewable sourcing that was not verified</li>
+        <li>Rapid expansion pace raises questions about community consultation quality</li>
+      </ul>
+      <div class="placeholder-block">[Placeholder: Additional research on specific Tribal-adjacent projects and community concerns to be incorporated.]</div>
+    </div>
+  </div>
+
+  <!-- BAYOTECH -->
+  <div class="company-card">
+    <div class="company-header">
+      <div>
+        <div class="company-name">BayoTech</div>
+        <div class="company-type">Hydrogen &nbsp;*&nbsp; Santa Fe / Southwest</div>
+      </div>
+      <div class="risk-flag flag-caution">CAUTION</div>
+    </div>
+    <div class="company-body">
+      <div class="company-grid">
+        <div>
+          <div class="company-field-label">The Pitch</div>
+          <div class="company-field-value">Regional modular hydrogen producer based in Santa Fe, NM. Pitches distributed hydrogen production as a path to energy independence for rural and remote communities.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Tribal Connection</div>
+          <div class="company-field-value">Geographic proximity to multiple Tribal nations in New Mexico and the Four Corners region. Part of the New Mexico hydrogen hub development effort.</div>
+        </div>
+      </div>
+      <div class="placeholder-block">[Placeholder: Additional research to be incorporated. Key questions: hydrogen type used (grey vs. green), specific Tribal community contacts, and New Mexico regulatory pathway details.]</div>
+    </div>
+  </div>
+
+  <!-- SIERRA ENERGY -->
+  <div class="company-card">
+    <div class="company-header">
+      <div>
+        <div class="company-name">Sierra Energy (FastOx Gasification)</div>
+        <div class="company-type">WTE Gasification &nbsp;*&nbsp; California</div>
+      </div>
+      <div class="risk-flag flag-priority">PRIORITY</div>
+    </div>
+    <div class="company-body">
+      <div class="company-grid">
+        <div>
+          <div class="company-field-label">The Pitch</div>
+          <div class="company-field-value">"FastOx" blast furnace gasification that can process any waste type - medical, hazardous, or municipal - into energy "without burning." Pitches total energy independence and waste elimination for rural and islanded communities including Tribal nations.</div>
+        </div>
+        <div>
+          <div class="company-field-label">Tribal Connection</div>
+          <div class="company-field-value">Specifically targets rural and "islanded" communities - including Tribal Nations - promising complete energy independence and elimination of waste hauling costs. The framing is designed to appeal to sovereignty and self-sufficiency values.</div>
+        </div>
+      </div>
+      <div class="company-field-label">Red Flags</div>
+      <ul class="red-flag-list">
+        <li>"No-burn" claim is a technicality - syngas produced by FastOx is combusted for power, releasing pollutants at that stage</li>
+        <li>Ability to process "any waste" including hazardous and medical waste raises contamination concerns</li>
+        <li>Sovereignty and self-sufficiency framing specifically designed to appeal to Tribal values - warrants scrutiny</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="placeholder-block">[Placeholder: Additional WTE company profiles - Aries Clean Technologies (PFAS/biosolids risks) - to be added. Profile structure: same format as above.]</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 04 - REGULATORY LANDSCAPE
+══════════════════════════════════════════════ -->
+<div class="page" id="s06">
+  <div class="page-header">
+    <div class="section-num">06</div>
+    <div class="section-title-block">
+      <h2>The Greenwashing Guide</h2>
+      <div class="section-label">Buzzwords, Red Flags &amp; What They Really Mean</div>
+    </div>
+  </div>
+
+  <p>Greenwashing refers to the practice of marketing a product or project as environmentally friendly when it is not - or when the environmental claims are misleading, incomplete, or unverifiable. Energy developers routinely use greenwashing language when pitching projects to Tribal communities. This section provides a plain-language guide to common terms and what to watch for.</p>
+
+  <h3>Buzzword Glossary</h3>
+
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-high">High Risk</span>
+    <div>
+      <div class="buzzword-term">"Zero Emission" / "Zero Emission Facility"</div>
+      <div class="buzzword-def">Typically refers only to direct on-site emissions, excluding upstream production, transportation, or waste disposal. Almost no energy facility is truly zero-emission when the full lifecycle is considered. <em>Ask: zero emissions of what, measured where, and across what scope?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-high">High Risk</span>
+    <div>
+      <div class="buzzword-term">"Carbon Neutral" / "Net Zero"</div>
+      <div class="buzzword-def">Often achieved through carbon offsets rather than actual emission reductions at the project site. Critical distinction: <strong>purchased offsets</strong> (e.g., paying another entity to reduce emissions elsewhere) are not the same as <strong>actual sequestration</strong> (capturing and permanently storing carbon on-site). Offsets are frequently of questionable quality, unverified, and may not represent genuine carbon reduction. Does not mean zero emissions from the facility. <em>Ask: how is carbon neutrality achieved - through actual emission reductions at the site, or through purchased offsets? If offsets are used, are they verified through third-party auditing?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-high">High Risk</span>
+    <div>
+      <div class="buzzword-term">"Non-Combustion" / "No-Burn" Technology</div>
+      <div class="buzzword-def">Used by gasification and pyrolysis companies to distinguish their process from traditional incineration. Misleading - the syngas or bio-oil produced is subsequently burned to generate energy, releasing pollutants. The "non-combustion" label applies only to the first stage of a multi-stage process. <em>Always ask what happens to the syngas or fuel produced.</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-high">High Risk</span>
+    <div>
+      <div class="buzzword-term">"Clean Hydrogen" / "Green Hydrogen"</div>
+      <div class="buzzword-def">No universal legal definition. "Clean hydrogen" under current IRA guidance includes blue hydrogen (fossil fuel-based with CCS), which is not green hydrogen. Projects may claim clean hydrogen status while using natural gas as a primary input. <em>Ask: what color hydrogen, and what is the energy source for production?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-medium">Caution</span>
+    <div>
+      <div class="buzzword-term">"Sustainable Aviation Fuel (SAF)" / "Sustainable Fuels"</div>
+      <div class="buzzword-def">A marketing term for fuels derived from waste or biomass. Does not mean zero-emission - SAF still produces CO<sub>2</sub> when burned. Often involves incineration-adjacent processing of municipal solid waste or plastic. <em>Ask: what feedstock is used, and what are the full lifecycle emissions?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-medium">Caution</span>
+    <div>
+      <div class="buzzword-term">"Community Benefit Agreement" / "Revenue Sharing"</div>
+      <div class="buzzword-def">Can be meaningful if legally binding and independently negotiated. Frequently used as a goodwill gesture without enforceable obligations. The presence of a CBA does not indicate a project is environmentally sound. <em>Ask: is this legally binding, who negotiated it, and can it be independently reviewed?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-medium">Caution</span>
+    <div>
+      <div class="buzzword-term">"DOE-Funded" / "Federally Backed" / "Part of a Hydrogen Hub"</div>
+      <div class="buzzword-def">Federal funding does not imply environmental approval or community benefit. DOE Hydrogen Hub designations cover multiple hydrogen types and do not require green hydrogen. Federal backing is frequently used to create urgency and pressure fast decisions. <em>Ask: what are the specific conditions of the federal funding, and what community input was required?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-medium">Caution</span>
+    <div>
+      <div class="buzzword-term">"Thermal Conversion" / "Advanced Conversion Technology"</div>
+      <div class="buzzword-def">Umbrella terms used to describe gasification, pyrolysis, or plasma arc processes without specifying what they are. Designed to avoid the negative associations of "incineration." <em>Ask: what specific process is used, what are the inputs, and what are the outputs including waste streams?</em></div>
+    </div>
+  </div>
+  <div class="buzzword-entry">
+    <span class="risk-badge risk-context">Context-Dependent</span>
+    <div>
+      <div class="buzzword-term">"Closed-Loop System" / "Circular Economy"</div>
+      <div class="buzzword-def"><strong>Red flag for PFAS and heavy metal contamination:</strong> This term suggests waste is fully recycled with no residual emissions or byproducts. In practice, no energy system is fully closed-loop. Biosolids-to-energy and waste gasification companies frequently use this language to obscure the fact that hazardous chemicals - particularly PFAS ("forever chemicals") - concentrate in the resulting char, slag, or ash residue. PFAS does not break down and can leach into soil and groundwater for decades. <em>Ask: what happens to solid residues (char, ash, slag)? Have they been tested for PFAS and heavy metals? Will the char or residue be marketed as a soil amendment or fertilizer (a known pathway for soil and groundwater contamination)?</em></div>
+    </div>
+  </div>
+
+  <div class="geo-strip"></div>
+  <h3>Red Flag Phrases to Watch For</h3>
+  <p>The following phrases, drawn from real developer pitch materials, should prompt immediate deeper scrutiny:</p>
+  <div class="placeholder-block">
+    [Placeholder: Additional red flag phrases to be drawn from company pitch material analysis - H-Cycle technical materials and Tallgrass WISHH concept paper to be reviewed. Anticipated content: specific language from pitch decks showing how "no emissions," "clean energy jobs," and "energy independence" framing is deployed.]
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 07 - DUE DILIGENCE CHECKLIST
+══════════════════════════════════════════════ -->
+<div class="page" id="s07">
+  <div class="page-header">
+    <div class="section-num">07</div>
+    <div class="section-title-block">
+      <h2>The Due Diligence Checklist</h2>
+      <div class="section-label">10 Questions to Ask Before Engaging with Any Energy Developer</div>
+    </div>
+  </div>
+
+  <p>Use this checklist before any formal engagement or agreement with an energy developer. These questions are designed to surface greenwashing, protect sovereignty, and ensure your community has the information needed to make a truly informed decision. You have the right to ask all of these questions - and to receive complete, written answers before proceeding.</p>
+
+  <div class="checklist-section">
+    <div class="checklist-section-title">About the Technology</div>
+    <div class="checklist-item">
+      <div class="check-num">1</div>
+      <div>
+        <strong>What type of hydrogen or WTE technology is being proposed - exactly - and what is the energy source?</strong>
+        <span>Do not accept generic terms like "clean hydrogen," "thermal conversion," or "advanced energy." Ask for the specific process name, the feedstock (what goes in), and the energy source. If it is hydrogen, ask what color and demand documentation of the electricity source.</span>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">2</div>
+      <div>
+        <strong>What are the projected air, water, and soil emissions at the project site - not just at the "system" level?</strong>
+        <span>Developers often present lifecycle or "system-level" emissions that exclude on-site impacts. Ask for specific emission estimates at the facility location, including all criteria pollutants (NOx, particulates, VOCs), any toxic air contaminants, and wastewater discharge volumes.</span>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">3</div>
+      <div>
+        <strong>Has an independent environmental impact assessment been conducted - one not funded by the developer?</strong>
+        <span>Developer-funded environmental studies have significant conflicts of interest. Demand an independent review. If one has not been conducted, this should be a prerequisite before any agreement.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-title">About the Company</div>
+    <div class="checklist-item">
+      <div class="check-num">4</div>
+      <div>
+        <strong>Has this company operated a similar project before - and what was the outcome?</strong>
+        <span>Ask for references from completed projects, not just proposals or pilots. Research the company's track record independently. For H-Cycle, research the Plasco Energy Group connection. For any company, search for news coverage, regulatory violations, and community complaints at prior sites.</span>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">5</div>
+      <div>
+        <strong>Does the company have a history of regulatory violations, fines, or community complaints?</strong>
+        <span>Search EPA's ECHO database (echo.epa.gov) for violations. Search state environmental agency records. Contact environmental justice organizations in areas where the company has operated.</span>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">6</div>
+      <div>
+        <strong>Is this company affiliated with - or a rebranding of - a failed project elsewhere?</strong>
+        <span>Research the leadership team's prior affiliations. Companies with failed projects frequently rebrand or restructure. H-Cycle's leadership ties to Plasco Energy Group is a documented example of this pattern.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-title">About the Process</div>
+    <div class="checklist-item">
+      <div class="check-num">7</div>
+      <div>
+        <strong>Were community members - not just council leadership - meaningfully consulted before the project was designed?</strong>
+        <span>FPIC requires that the full community, not just elected leadership, have the opportunity to participate in decisions. Ask how community input was solicited, who was included, and how it shaped the project design. A presentation to council is not the same as community consultation.</span>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">8</div>
+      <div>
+        <strong>What federal or state funding is the developer accessing, and what conditions come with it?</strong>
+        <span>Federal funding through IRA or DOE Hydrogen Hubs comes with specific requirements - ask for documentation. Funding conditions may constrain future community decision-making or create obligations that are not immediately apparent.</span>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">9</div>
+      <div>
+        <strong>What legally binding protections exist if the developer fails to meet commitments?</strong>
+        <span>Ask for specific, enforceable mechanisms - not just promises. Community Benefit Agreements should be reviewed by independent legal counsel before signing. Ask what happens if the company goes bankrupt, is sold, or fails to meet emission standards.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-title">About Alternatives</div>
+    <div class="checklist-item">
+      <div class="check-num">10</div>
+      <div>
+        <strong>Has the community been presented with genuinely renewable alternatives - solar, wind, community-owned - at comparable scale?</strong>
+        <span>Any developer proposing a hydrogen or WTE project should be able to compare it to solar and wind alternatives. If they cannot or will not make this comparison, that is a red flag. See Section 08 for an overview of alternative options.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 08 - ALTERNATIVE SOLUTIONS
+══════════════════════════════════════════════ -->
+<div class="page" id="s08">
+  <div class="page-header">
+    <div class="section-num">08</div>
+    <div class="section-title-block">
+      <h2>The Alternatives</h2>
+      <div class="section-label">Genuinely Renewable Energy Options for Tribal Nations</div>
+    </div>
+  </div>
+
+  <p>The most important question to ask any developer is: what are the alternatives? Hydrogen and waste-to-energy projects are not the only path to energy sovereignty, economic development, or clean energy transition. This section provides a brief overview of alternatives that have demonstrated success on Tribal lands.</p>
+
+  <div class="placeholder-block">[Placeholder: Full section to be developed following interview phase. Key topics to cover:
+  <br>* Community-owned solar - examples of successful Tribal solar projects (e.g. Navajo Tribal Utility Authority solar, Standing Rock solar)
+  <br>* Wind energy - Tribal wind projects and lessons learned
+  <br>* What makes an energy project genuinely beneficial - sovereignty, benefit-sharing, local employment, and community control
+  <br>* IRA incentives available for truly renewable Tribal energy projects
+  <br>* Key organizations providing technical assistance for Tribal renewable energy development (Native FEWS Alliance, UC Berkeley Native FEWS Initiative, BIA Tribal Renewable Energy program)
+  <br>* Markers to distinguish a genuinely beneficial energy proposal from a greenwashed one]</div>
+
+  <div class="callout">
+    <p>The energy transition presents real economic opportunities for Tribal nations - but not all "clean energy" projects deliver on that promise. The goal of this toolkit is not to oppose energy development on Tribal lands, but to ensure that the development that does occur is genuinely clean, genuinely beneficial, and genuinely decided by the community.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 09 - RESOURCES
+══════════════════════════════════════════════ -->
+<div class="page" id="s09">
+  <div class="page-header">
+    <div class="section-num">09</div>
+    <div class="section-title-block">
+      <h2>References &amp; Resources</h2>
+      <div class="section-label">Key Organizations, Documents &amp; Databases</div>
+    </div>
+  </div>
+
+  <div class="resource-section">
+    <h3>Indigenous &amp; Environmental Justice Organizations</h3>
+    <ul class="resource-list">
+      <li><strong>GreenAction for Health &amp; Environmental Justice</strong> - greenaction.org - Primary sponsor of this toolkit. Organizing support and technical resources for Tribal communities facing energy project proposals.</li>
+      <li><strong>Indigenous Environmental Network (IEN)</strong> - ienearth.org - National Indigenous-led organization with deep expertise on false solutions, carbon markets, and energy justice. Contact: Thomas Joseph Tsewenaldin (thomasjoseph@ienearth.org) and Jordan Harmon (jordan@ienearth.org)</li>
+      <li><strong>Pueblo Action Alliance</strong> - puebloactionalliance.org - Albuquerque-based organization working on Indigenous sovereignty and environmental justice in New Mexico. Contact: puebloactionalliance@gmail.com</li>
+      <li><strong>Diné C.A.R.E. (Citizens Against Ruining Our Environment)</strong> - Navajo-led organization with decades of experience resisting extractive industry on Navajo lands. Contact: DineCare88@gmail.com</li>
+      <li><strong>Tó Nizhóní Ání (Sacred Water Speaks)</strong> - tonizhoniani.org - Navajo organization focused on water rights and energy justice. Contact: info@tonizhoniani.org</li>
+      <li><strong>Just Transition Alliance</strong> - jtalliance.org - Expertise on false solutions framing and just transition principles. Contact: Jose Bravo</li>
+      <li><strong>Global Alliance for Incinerator Alternatives (GAIA)</strong> - no-burn.org - International organization with detailed technical resources on WTE technologies and their impacts.</li>
+      <li><strong>Earthjustice</strong> - earthjustice.org - Legal resources including Federal Hydrogen Hub Community Guide and community advocacy support.</li>
+    </ul>
+  </div>
+
+  <div class="resource-section">
+    <h3>Key Documents</h3>
+    <ul class="resource-list">
+      <li><strong>Bradley Angel, "The Toxic Threat to Indian Lands" (1991)</strong> - GreenAction / EJNet.org - Foundational document identifying historical patterns of environmental targeting of Tribal lands.</li>
+      <li><strong>Earthjustice, "Federal Hydrogen Hub Community Guide"</strong> - earthjustice.org - Plain-language guide to the DOE Hydrogen Hub program and community rights.</li>
+      <li><strong>Earthjustice, "Specific Types of Hydrogen Hub Projects That Could Impact Your Community" (2024)</strong> - Detailed technical overview of hydrogen hub project types.</li>
+      <li><strong>MIT Environmental Justice Clinic, "Open Letter to the Navajo Nation Council Re: Tallgrass Proposed Hydrogen Pipeline"</strong> - Key document on pipeline concerns.</li>
+      <li><strong>Pierre Guerber / Ecosoum, "A Guide to Assess Waste-to-Energy Project Proposals" (2023)</strong> - Technical framework for WTE project assessment.</li>
+      <li><strong>Indian Affairs National Environmental Policy Act (NEPA) Guidebook</strong> - BIA - Official guidance on NEPA requirements for Tribal lands.</li>
+      <li><strong>Elizabeth Kronk Warner, "Complicated Environmental Regulation in Indian Country" (2021)</strong> - The Regulatory Review - Academic overview of regulatory complexity on Tribal lands.</li>
+    </ul>
+  </div>
+
+  <div class="resource-section">
+    <h3>Databases &amp; Mapping Tools</h3>
+    <ul class="resource-list">
+      <li><strong>Tribal Energy Projects Database</strong> - US DOE - database of energy projects on or near Tribal lands</li>
+      <li><strong>EPA ECHO Database</strong> - echo.epa.gov - Enforcement and compliance history for regulated facilities</li>
+      <li><strong>Bureau of Indian Affairs Tract Viewer</strong> - ArcGIS - Land status mapping for Tribal trust lands</li>
+      <li><strong>NPMS Public Viewer</strong> - npms.phmsa.dot.gov - National Pipeline Mapping System - pipeline infrastructure locations</li>
+      <li><strong>Hydrogen Projects in the US</strong> - Clean Energy Group - cleanenergygroup.org - Map and database of US hydrogen projects</li>
+      <li><strong>Native-Land.ca</strong> - Interactive map of Indigenous territories, treaties, and languages</li>
+    </ul>
+  </div>
+
+  <div class="geo-strip"></div>
+  <div class="callout">
+    <p>This toolkit is a living document. As new companies, projects, and regulatory developments emerge, it will be updated. For the most current information, contact GreenAction at greenaction.org or reach out to the allied organizations listed above.</p>
+  </div>
+
+  <p style="font-size:12px; color:var(--mgray); margin-top:24px;"><strong>AI Use Disclosure:</strong> Google Gemini was used for brainstorming and resource discovery during the research phase. Claude AI (Anthropic) was used to design and format presentation materials. All substantive research, analysis, synthesis, and conclusions are the original work of the author. This use is consistent with UC Berkeley MCS program guidelines.</p>
+</div>
+
+</body>
+
+<script>
+// Smooth scroll and active section highlighting
+document.addEventListener('DOMContentLoaded', function() {
+  const sidebarLinks = document.querySelectorAll('.sidebar-toc a');
+  const sections = document.querySelectorAll('.page');
+  
+  // Smooth scroll on click
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  
+  // Update active section on scroll
+  window.addEventListener('scroll', function() {
+    let current = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    sidebarLinks.forEach(link => {
+      const li = link.parentElement;
+      li.classList.remove('active');
+    });
+    
+    if (current) {
+      const activeLink = document.querySelector(`.sidebar-toc a[href="#${current}"]`);
+      if (activeLink) {
+        activeLink.parentElement.classList.add('active');
+      }
+    }
+  });
+});
+</script>
+
+</html>
