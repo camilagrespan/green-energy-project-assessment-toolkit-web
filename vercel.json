@@ -1,11 +1,5 @@
 {
   "name": "Green Energy Project Assessment Toolkit",
   "version": 2,
-  "public": true,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/Green Energy Project Assessment Toolkit.html"
-    }
-  ]
+  "public": true
 }
